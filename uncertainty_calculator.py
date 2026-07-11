@@ -1,5 +1,3 @@
-import math
-
 # --- RESULT FORMATTING ---
 """
 Produces the final result with value ± uncertainty and optional unit.
@@ -7,9 +5,9 @@ Shown with 10 decimal places so that the user can round to desired significant f
 """
 
 def final_result(value, uncertainty, unit=""):
-    if uncertainty < 0.001 or abs(value) >= 1e4:
+    if abs(uncertainty) < 0.001 or abs(value) >= 1e4:
         # Using scientific notation for very small uncertainty or large numbers.
-        return f"{value:.10f} ± {uncertainty:.10f} {unit}".strip()
+        return f"{value:.10e} ± {uncertainty:.10e} {unit}".strip()
     else:
         return f"{value:.10f} ± {uncertainty:.10f} {unit}".strip()
 
